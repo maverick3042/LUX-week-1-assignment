@@ -1,0 +1,26 @@
+
+Finds the total sales for each product.
+
+
+ SELECT ProductID, SUM(Amount) AS TotalSales
+FROM Sales
+GROUP BY ProductID;
+
+
+Calculates the total sales for each month.
+ 
+SELECT EXTRACT(YEAR FROM SaleDate) AS Year, EXTRACT(MONTH FROM SaleDate) AS Month, SUM(Amount) AS TotalMonthlySales
+FROM Sales
+GROUP BY EXTRACT(YEAR FROM SaleDate), EXTRACT(MONTH FROM SaleDate)
+ORDER BY Year, Month;
+
+
+
+
+ Identifies customers who made more than 5 purchases.
+
+
+SELECT CustomerID, COUNT(SaleID) AS NumberOfPurchases
+FROM Sales
+GROUP BY CustomerID
+HAVING COUNT(SaleID) > 5;
